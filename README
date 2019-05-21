@@ -9,3 +9,4 @@ If you do not pass an int you will receive a 400 bad request
 If you do not hit the correct path will get a 404 not found
 
 Will improve error handling, add integration tests and controller tests.
+If you do not provide or provide an algorithm other than sieve of eratosthenes it will use default algoirthm.
