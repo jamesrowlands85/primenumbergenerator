@@ -1,6 +1,6 @@
 package com.rowlands.primenumber.primenumbergenerator.feature.generate.v1.endpoint;
 
-import com.rowlands.primenumber.primenumbergenerator.feature.generate.v1.api.PrimeNumberResponse;
+import com.google.gson.Gson;
 import com.rowlands.primenumber.primenumbergenerator.feature.generate.v1.service.PrimeNumberGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,15 +21,18 @@ public class PrimeNumberGeneratorController {
 
     @RequestMapping(value = "primegenerator/{number}", method = RequestMethod.GET)
     @ResponseBody
-    public PrimeNumberResponse handleUpdate(@PathVariable int number,
-                                            @RequestParam("algorithm_name") Optional<String> algorithm_name) {
+    public String getPrimesLessThanOrEqualTo(   @PathVariable int number,
+                                                @RequestParam("algorithm_name") Optional<String> algorithm_name) {
 
+        Gson gson = new Gson();
 
         if(algorithm_name.isPresent()) {
-            return new PrimeNumberResponse(primeNumberGeneratorService.getPrimesFor(number, algorithm_name.get()));
+            return gson.toJson(primeNumberGeneratorService.getPrimesFor(number, algorithm_name.get()));
+
         }
         else {
-            return new PrimeNumberResponse(primeNumberGeneratorService.getPrimesFor(number, "default"));
+            return gson.toJson(primeNumberGeneratorService.getPrimesFor(number, "default"));
         }
+
     }
 }

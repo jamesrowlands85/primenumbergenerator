@@ -1,18 +1,22 @@
 package com.rowlands.primenumber.primenumbergenerator.feature.generate.v1.service;
 
+import com.rowlands.primenumber.primenumbergenerator.feature.generate.v1.api.PrimeNumberResponse;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PrimeNumberGeneratorService {
 
+    public PrimeNumberResponse getPrimesFor(int number, String algorithmName) {
 
-    public String getPrimesFor(int number, String algorithm_name) {
-        if(algorithm_name.equals("sieve_of_eratosthenes")) {
-            return new PrimeNumberGeneratorSieveOfEratosthenesImpl().generatePrimeNumbers(number);
+        String primeResult;
+
+        if(algorithmName.equals("sieve_of_eratosthenes")) {
+            primeResult = new PrimeNumberGeneratorSieveOfEratosthenesImpl().generatePrimeNumbers(number);
         }
         else {
-            return new PrimeNumberGeneratorImpl().generatePrimeNumbers(number);
+            primeResult =  new PrimeNumberGeneratorImpl().generatePrimeNumbers(number);
         }
 
+        return new PrimeNumberResponse(algorithmName, primeResult);
     }
 }

@@ -10,5 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PrimeNumberResponse {
-    String message;
+    String algorithm;
+    String primes;
 }
