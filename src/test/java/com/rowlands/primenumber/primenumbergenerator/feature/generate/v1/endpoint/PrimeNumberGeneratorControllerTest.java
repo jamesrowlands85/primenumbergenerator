@@ -1,9 +1,6 @@
 package com.rowlands.primenumber.primenumbergenerator.feature.generate.v1.endpoint;
 
-import com.google.gson.Gson;
 import com.rowlands.primenumber.primenumbergenerator.feature.generate.v1.api.PrimeNumberResponse;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,19 +27,6 @@ public class PrimeNumberGeneratorControllerTest {
 
     @MockBean
     private PrimeNumberGeneratorController primeNumberGeneratorController;
-
-    private Gson gson;
-
-    @Before
-    public void setUp() {
-        gson = new Gson();
-
-    }
-
-    @After
-    public void tearDown() {
-        gson = null;
-    }
 
 
     @Test
