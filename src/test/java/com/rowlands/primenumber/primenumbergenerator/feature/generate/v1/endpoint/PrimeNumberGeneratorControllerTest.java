@@ -50,9 +50,8 @@ public class PrimeNumberGeneratorControllerTest {
         String getPrimeFor0 = "0";
 
         PrimeNumberResponse primeNumberResponse = new PrimeNumberResponse("default", "0 does not have any prime numbers");
-        String response = gson.toJson(primeNumberResponse);
 
-        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor0), Optional.empty())).willReturn(response);
+        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor0), Optional.empty())).willReturn(primeNumberResponse);
 
         mvc.perform(get("/primegenerator/" + getPrimeFor0)
                     .contentType(MediaType.APPLICATION_JSON))
@@ -66,9 +65,8 @@ public class PrimeNumberGeneratorControllerTest {
         String getPrimeFor2 = "2";
 
         PrimeNumberResponse primeNumberResponse = new PrimeNumberResponse("default", "2");
-        String response = gson.toJson(primeNumberResponse);
 
-        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor2), Optional.empty())).willReturn(response);
+        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor2), Optional.empty())).willReturn(primeNumberResponse);
 
         mvc.perform(get("/primegenerator/" + getPrimeFor2)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -82,9 +80,8 @@ public class PrimeNumberGeneratorControllerTest {
         String getPrimeFor5 = "5";
 
         PrimeNumberResponse primeNumberResponse = new PrimeNumberResponse("default", "2, 3, 5");
-        String response = gson.toJson(primeNumberResponse);
 
-        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor5), Optional.empty())).willReturn(response);
+        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor5), Optional.empty())).willReturn(primeNumberResponse);
 
         mvc.perform(get("/primegenerator/" + getPrimeFor5)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -99,9 +96,8 @@ public class PrimeNumberGeneratorControllerTest {
         String algorithm = "sieve_of_eratosthenes";
 
         PrimeNumberResponse primeNumberResponse = new PrimeNumberResponse("sieve_of_eratosthenes", "2, 3, 5");
-        String response = gson.toJson(primeNumberResponse);
 
-        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor5), Optional.of(algorithm))).willReturn(response);
+        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor5), Optional.of(algorithm))).willReturn(primeNumberResponse);
 
         mvc.perform(get("/primegenerator/" + getPrimeFor5 + "?algorithm_name=sieve_of_eratosthenes")
                 .contentType(MediaType.APPLICATION_JSON))
@@ -116,9 +112,8 @@ public class PrimeNumberGeneratorControllerTest {
         String algorithm = "default";
 
         PrimeNumberResponse primeNumberResponse = new PrimeNumberResponse("default", "2, 3, 5");
-        String response = gson.toJson(primeNumberResponse);
 
-        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor5), Optional.of(algorithm))).willReturn(response);
+        given(primeNumberGeneratorController.getPrimesLessThanOrEqualTo(Integer.valueOf(getPrimeFor5), Optional.of(algorithm))).willReturn(primeNumberResponse);
 
         mvc.perform(get("/primegenerator/" + getPrimeFor5 + "?algorithm_name=default")
                 .contentType(MediaType.APPLICATION_JSON))
