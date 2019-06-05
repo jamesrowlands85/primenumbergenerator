@@ -14,6 +14,7 @@ public class PrimeNumberGeneratorService {
             primeResult = new PrimeNumberGeneratorSieveOfEratosthenesImpl().generatePrimeNumbers(number);
         }
         else {
+            algorithmName = "default";
             primeResult =  new PrimeNumberGeneratorImpl().generatePrimeNumbers(number);
         }
 
